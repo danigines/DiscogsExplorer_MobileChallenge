@@ -1,0 +1,30 @@
+disabled_rules:
+  - identifier_name       # Allows longer or unusual variable names
+  - force_cast            # You may want to allow it during prototyping
+  - force_unwrapping      # Same, caution: only in safe contexts
+
+opt_in_rules:
+  - empty_count           # Use `.isEmpty` instead of `.count == 0`
+  - explicit_init         # Explicit use of `init()` in some cases
+  - sorted_first_last     # Prefer `first`/`last` over `[0]` / `[-1]`
+
+included:
+  - DiscogsExplorer/      # Lint your actual app code
+
+excluded:
+  - Pods
+  - Carthage
+  - build
+  - Tests/Mocks           # Optional: exclude generated or fake test files
+
+line_length: 120
+
+type_body_length:
+  warning: 300
+  error: 400
+
+file_length:
+  warning: 400
+  error: 500
+
+reporter: xcode

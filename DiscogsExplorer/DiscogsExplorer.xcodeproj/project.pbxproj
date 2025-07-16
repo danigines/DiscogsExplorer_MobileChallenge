@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		95359EE92E2836CA000B9A0D /* SwiftLintFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 95359EE82E2836CA000B9A0D /* SwiftLintFramework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		9521B0062E282C6D00B9F833 /* DiscogsExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscogsExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95359EE92E2836CA000B9A0D /* SwiftLintFramework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = DiscogsExplorer;
 			packageProductDependencies = (
+				95359EE82E2836CA000B9A0D /* SwiftLintFramework */,
 			);
 			productName = DiscogsExplorer;
 			productReference = 9521B0062E282C6D00B9F833 /* DiscogsExplorer.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 9521AFFD2E282C6D00B9F833;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				95359EE72E2836CA000B9A0D /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9521B0072E282C6D00B9F833 /* Products */;
 			projectDirPath = "";
@@ -322,6 +331,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		95359EE72E2836CA000B9A0D /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.59.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		95359EE82E2836CA000B9A0D /* SwiftLintFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 95359EE72E2836CA000B9A0D /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = SwiftLintFramework;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9521AFFE2E282C6D00B9F833 /* Project object */;
 }
