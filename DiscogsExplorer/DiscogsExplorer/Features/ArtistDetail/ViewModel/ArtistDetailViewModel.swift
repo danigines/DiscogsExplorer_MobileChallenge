@@ -4,7 +4,7 @@
 
 import Foundation
 
-/// ViewModel responsible for fetching and exposing artist details to the view.
+// ViewModel responsible for fetching and exposing artist details to the view.
 @MainActor
 final class ArtistDetailViewModel: ObservableObject {
   // MARK: - Published Properties
@@ -26,7 +26,7 @@ final class ArtistDetailViewModel: ObservableObject {
   }
 
   // MARK: - Public API
-  /// Fetches the full artist details from the API.
+  // Fetches the full artist details from the API.
   func fetchArtistDetail() async {
     isLoading = true
     errorMessage = nil

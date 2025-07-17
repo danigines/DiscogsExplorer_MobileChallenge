@@ -39,7 +39,7 @@ extension DiscogsAPIService {
     // Check if the status code is in the 200's success range
     guard 200..<300 ~= httpResponse.statusCode else { throw APIError.serverError(statusCode: httpResponse.statusCode) }
 
-    // Attempt to decode the JSON data into our expected model
+    // Attempt to decode the JSON data into our expected model -> SearchResponse
     do {
       return try JSONDecoder().decode(SearchResponse.self, from: data)
     } catch {

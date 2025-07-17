@@ -4,7 +4,7 @@
 
 import Foundation
 
-/// Represents detailed information about an artist from Discogs.
+// Represents detailed information about an artist from Discogs.
 struct ArtistDetail: Codable {
   let id: Int
   let name: String

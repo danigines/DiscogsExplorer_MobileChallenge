@@ -13,11 +13,12 @@ extension DiscogsAPIService {
   func fetchArtistDetail(id: Int) async throws -> ArtistDetail {
     // Construct the API endpoint: /artists/{id}
     let url = Environment.baseURL.appendingPathComponent("artists/\(id)")
+
     // Prepare the request and attach the Discogs token via Authorization header
-    
     var request = URLRequest(url: url)
     request.setValue(Environment.authHeader["Authorization"], forHTTPHeaderField: "Authorization")
 
+    // Perform the network request asynchronously
     let (data, response) = try await session.data(for: request)
 
     // Validate that URL is constructed correctly
