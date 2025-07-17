@@ -14,14 +14,14 @@ struct ReleaseRowView: View {
       AlbumDetailView(masterID: release.id)
     } label: {
       HStack(spacing: 12) {
-        AsyncImage(url: URL(string: release.thumb ?? "")) { image in
-          image.resizable()
-        } placeholder: {
+        // Album thumbnail
+        CachedImage(url: URL(string: release.thumb ?? "")) {
           Color.gray.opacity(0.2)
         }
         .frame(width: 50, height: 50)
         .clipShape(RoundedRectangle(cornerRadius: 8))
 
+        // Album title and year
         VStack(alignment: .leading, spacing: 4) {
           Text(release.title)
             .font(.body)

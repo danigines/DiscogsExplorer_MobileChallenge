@@ -28,11 +28,8 @@ struct AlbumDetailView: View {
 
             // Album Cover
             if let imageURL = album.images?.first?.uri {
-              AsyncImage(url: URL(string: imageURL)) { phase in
-                switch phase {
-                case .success(let image): image.resizable()
-                default: Color.gray.opacity(0.2)
-                }
+              CachedImage(url: URL(string: imageURL)) {
+                Color.gray.opacity(0.2)
               }
               .aspectRatio(contentMode: .fit)
               .frame(maxWidth: .infinity)

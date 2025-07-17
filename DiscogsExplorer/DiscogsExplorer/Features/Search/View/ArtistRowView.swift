@@ -4,15 +4,14 @@
 
 import SwiftUI
 
+// A single row representing a search result for an artist.
 struct ArtistRowView: View {
   let artist: ArtistSearchResult
 
   var body: some View {
     HStack(spacing: 12) {
       // Thumbnail or placeholder
-      AsyncImage(url: URL(string: artist.thumb ?? "")) { image in
-        image.resizable()
-      } placeholder: {
+      CachedImage(url: URL(string: artist.thumb ?? "")) {
         Image(systemName: "person.crop.circle.fill")
           .resizable()
           .foregroundStyle(.secondary)
