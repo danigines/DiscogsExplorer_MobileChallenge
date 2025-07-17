@@ -29,7 +29,7 @@ struct AlbumDetailView: View {
             // Album Cover
             if let imageURL = album.images?.first?.uri {
               CachedImage(url: URL(string: imageURL)) {
-                Color.gray.opacity(0.2)
+                AppTheme.placeholderBackground // visual placeholder while downloading the image remotely.
               }
               .aspectRatio(contentMode: .fit)
               .frame(maxWidth: .infinity)
@@ -39,20 +39,24 @@ struct AlbumDetailView: View {
             // Album Title
             Text(album.title)
               .font(.title.bold())
+              .foregroundColor(AppTheme.primaryText)
 
             // Metadata
             VStack(alignment: .leading, spacing: 4) {
               if let year = album.year {
                 Text("Year: \(year)")
+                  .foregroundColor(AppTheme.primaryText)
               }
 
               if let genres = album.genres, !genres.isEmpty {
                 Text("Genres: \(genres.joined(separator: ", "))")
+                  .foregroundColor(AppTheme.primaryText)
               }
 
               if let labels = album.labels {
                 let labelNames = labels.map { $0.name }
                 Text("Labels: \(labelNames.joined(separator: ", "))")
+                  .foregroundColor(AppTheme.primaryText)
               }
             }
             .font(.subheadline)
@@ -63,6 +67,7 @@ struct AlbumDetailView: View {
               Divider().padding(.vertical, 8)
               Text("Tracklist")
                 .font(.headline)
+                .foregroundColor(AppTheme.primaryText)
               ForEach(tracks) { track in
                 HStack {
                   Text(track.position)

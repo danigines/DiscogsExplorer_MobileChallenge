@@ -16,7 +16,7 @@ struct ReleaseRowView: View {
       HStack(spacing: 12) {
         // Album thumbnail
         CachedImage(url: URL(string: release.thumb ?? "")) {
-          Color.gray.opacity(0.2)
+          AppTheme.placeholderBackground // visual placeholder while downloading the image remotely.
         }
         .frame(width: 50, height: 50)
         .clipShape(RoundedRectangle(cornerRadius: 8))

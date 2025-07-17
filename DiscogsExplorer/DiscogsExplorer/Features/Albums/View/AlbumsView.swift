@@ -83,7 +83,7 @@ struct AlbumsView: View {
       }
       .padding(.horizontal, 10)
       .padding(.vertical, 6)
-      .background(Color.gray.opacity(0.2))
+      .background(AppTheme.placeholderBackground) // background color of the selector,
       .clipShape(Capsule())
     }
   }

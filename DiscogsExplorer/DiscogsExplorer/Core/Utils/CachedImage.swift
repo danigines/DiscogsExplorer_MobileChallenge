@@ -14,7 +14,7 @@ struct CachedImage: View {
   init(
     url: URL?,
     @ViewBuilder placeholder: @escaping () -> some View = {
-      Color.gray.opacity(0.2)
+      AppTheme.placeholderBackground // loading background
     }
   ) {
     self.url = url
