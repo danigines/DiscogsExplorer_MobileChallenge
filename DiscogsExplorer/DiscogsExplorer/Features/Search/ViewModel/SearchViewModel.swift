@@ -16,12 +16,14 @@ final class SearchViewModel: ObservableObject {
   private let apiService: DiscogsAPIServiceProtocol
 
   // MARK: - Init
-  init(apiService: DiscogsAPIServiceProtocol = DiscogsAPIService()) {
+  init(
+    apiService: DiscogsAPIServiceProtocol = DiscogsAPIService()
+  ) {
     self.apiService = apiService
   }
 
   // MARK: - Public Methods
-  /// Performs a new search, resetting results and page state.
+  // Performs a new search, resetting results and page state.
   func searchArtists() async {
     // Prevent empty queries
     guard !query.trimmingCharacters(in: .whitespaces).isEmpty else {

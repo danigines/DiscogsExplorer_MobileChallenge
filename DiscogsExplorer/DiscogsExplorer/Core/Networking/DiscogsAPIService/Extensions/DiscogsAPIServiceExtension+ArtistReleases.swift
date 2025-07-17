@@ -1,26 +1,26 @@
-//  DiscogsAPIServiceExtension+SearchArtists.swift
+//  DiscogsAPIServiceExtension+ArtistReleases.swift
 //  DiscogsExplorer
 //  Created by Daniel Garcia on 16/07/25.
 
 import Foundation
-
 extension DiscogsAPIService {
   /// Searches for artists by name using Discogs `/database/search` endpoint.
   ///
   /// - Parameters:
-  ///   - query: The artist name to search for.
-  /// - Returns: A decoded `SearchResponse` containing artist results and pagination info.
+  ///   - artistID: The unique ID for the artist.
+  /// - Returns: A decoded `ReleaseResponse` containing artist results info.
   /// - Throws: `APIError` if request fails, response is invalid, or decoding fails.
-  func searchArtists(query: String) async throws -> SearchResponse {
+  func fetchArtistReleases(artistID: Int) async throws -> ReleaseResponse {
     // Build the full URL with query parameters
     var components = URLComponents(
-      url: Environment.baseURL.appendingPathComponent("database/search"),
-      resolvingAgainstBaseURL: false)
+      url: Environment.baseURL.appendingPathComponent("artists/\(artistID)/releases"),
+      resolvingAgainstBaseURL: false
+    )
 
     // Add required query parameters for search
     components?.queryItems = [
-      URLQueryItem(name: "q", value: query),
-      URLQueryItem(name: "type", value: "artist") // limit to artist results
+      URLQueryItem(name: "sort", value: "year"),
+      URLQueryItem(name: "sort_order", value: "desc")
     ]
 
     // Validate that URL is constructed correctly
@@ -39,12 +39,13 @@ extension DiscogsAPIService {
     // Check if the status code is in the 200's success range
     guard 200..<300 ~= httpResponse.statusCode else { throw APIError.serverError(statusCode: httpResponse.statusCode) }
 
-    // Attempt to decode the JSON data into our expected model -> SearchResponse
+    // Attempt to decode the JSON data into our expected model -> ReleaseResponse
     do {
-      return try JSONDecoder().decode(SearchResponse.self, from: data)
+      return try JSONDecoder().decode(ReleaseResponse.self, from: data)
     } catch {
       // If decoding fails, return a decoding-specific error
       throw APIError.decodingError
     }
   }
+
 }

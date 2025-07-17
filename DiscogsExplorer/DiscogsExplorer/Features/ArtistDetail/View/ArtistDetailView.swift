@@ -4,11 +4,11 @@
 
 import SwiftUI
 
-// Displays the detailed information for an artist, including profile, image, and band members.
+// Displays the detailed information about a selected artist, including profile, members, and a link to view their albums.
 struct ArtistDetailView: View {
   @StateObject private var viewModel: ArtistDetailViewModel
 
-  /// Accepts the artist ID passed from the search view.
+  // Accepts the artist ID passed from the previous screen (SearchView)
   init(artistID: Int) {
     _viewModel = StateObject(
       wrappedValue: ArtistDetailViewModel(
@@ -47,7 +47,7 @@ struct ArtistDetailView: View {
             Text(artist.name)
               .font(.largeTitle.bold())
 
-            // Optional profile/description
+            // Profile / Description
             if let profile = artist.profile {
               Text(profile)
                 .font(.body)
@@ -74,7 +74,20 @@ struct ArtistDetailView: View {
               .padding(.top, 12)
             }
 
-            // TODO: Navigation to albums
+            // Navigation to Albums View
+            if artist.releasesURL != nil {
+              NavigationLink {
+                AlbumsView(artistID: artist.id)
+              } label: {
+                HStack {
+                  Image(systemName: "music.note.list")
+                  Text("View Albums")
+                    .font(.headline)
+                }
+                .foregroundStyle(.blue)
+                .padding(.top, 20)
+              }
+            }
           }
           .padding()
         }
