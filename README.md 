@@ -21,3 +21,9 @@ An iOS 17+ SwiftUI app to search and explore music artists, albums, and band mem
 
 1. Clone this repository.
 2. Open `DiscogsExplorer.xcodeproj` or `xcworkspace`.
+3. Add your Discogs API token in `Environment.swift`.
+4. Run the app using an iOS 17 simulator or device.
+
+## 📐 Architecture
+
+This app follows a **modular MVVM + Clean Architecture** structure
