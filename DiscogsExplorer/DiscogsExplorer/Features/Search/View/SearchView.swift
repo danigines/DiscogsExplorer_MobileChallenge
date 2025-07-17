@@ -10,36 +10,58 @@ struct SearchView: View {
   var body: some View {
     NavigationStack {
       VStack {
-        // Search bar at the top
+        // 🔍 Search Bar at the top
         TextField("Search for an artist", text: $viewModel.query)
           .textFieldStyle(.roundedBorder)
-          .padding()
+          .padding(.horizontal)
           .onSubmit {
             Task { await viewModel.searchArtists() }
           }
 
-        // Loading indicator
+        // Initial loading state
         if viewModel.isLoading && viewModel.results.isEmpty {
+          Spacer()
           ProgressView("Searching...")
             .padding()
+          Spacer()
         }
-
         // Empty state
-        if viewModel.results.isEmpty && !viewModel.isLoading {
+        else if viewModel.results.isEmpty {
           Spacer()
-          Text("Start typing to search for artists")
-            .foregroundStyle(.secondary)
+          VStack(spacing: 12) {
+            Image(systemName: "magnifyingglass")
+              .font(.system(size: 40))
+              .foregroundStyle(.secondary)
+            Text("Start typing to search for artists")
+              .font(.body)
+              .foregroundStyle(.secondary)
+          }
           Spacer()
         }
-
-        List(viewModel.results) { artist in
-          NavigationLink {
-            // Destination view: the detail view for this artist
-            ArtistDetailView(artistID: artist.id)
-          } label: {
-            // What appears in the list row
-            ArtistRowView(artist: artist)
+        // Results list
+        else {
+          List {
+            ForEach(viewModel.results) { artist in
+              NavigationLink {
+                // Destination view: the detail view for this artist
+                ArtistDetailView(artistID: artist.id)
+              } label: {
+                // What appears in the list row
+                ArtistRowView(artist: artist)
+              }
+              // Show spinner at end of list when paginating
+              if artist.id == viewModel.results.last?.id,
+                 viewModel.isLoading {
+                HStack {
+                  Spacer()
+                  ProgressView()
+                    .padding(.vertical)
+                  Spacer()
+                }
+              }
+            }
           }
+          .listStyle(.plain)
         }
       }
       .navigationTitle("Search")
