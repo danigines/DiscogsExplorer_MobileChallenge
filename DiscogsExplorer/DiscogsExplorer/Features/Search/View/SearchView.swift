@@ -31,6 +31,16 @@ struct SearchView: View {
             .foregroundStyle(.secondary)
           Spacer()
         }
+
+        List(viewModel.results) { artist in
+          NavigationLink {
+            // Destination view: the detail view for this artist
+            ArtistDetailView(artistID: artist.id)
+          } label: {
+            // What appears in the list row
+            ArtistRowView(artist: artist)
+          }
+        }
       }
       .navigationTitle("Search")
       .alert("Error", isPresented: Binding<Bool>(

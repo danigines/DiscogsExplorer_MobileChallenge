@@ -5,7 +5,7 @@
 import Foundation
 
 // Concrete implementation of the API service using `URLSession` and `async/await`.
-final class DiscogsAPIService {
+final class DiscogsAPIService: DiscogsAPIServiceProtocol {
   private(set) var session: URLSession
 
   // Default initializer uses `URLSession.shared` but can be overridden for testing.

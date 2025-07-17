@@ -8,4 +8,6 @@ import Foundation
 protocol DiscogsAPIServiceProtocol {
   /// Searches for artists using a query string.
   func searchArtists(query: String) async throws -> SearchResponse
+  /// Searches for artists detail an ID.
+  func fetchArtistDetail(id: Int) async throws -> ArtistDetail
 }

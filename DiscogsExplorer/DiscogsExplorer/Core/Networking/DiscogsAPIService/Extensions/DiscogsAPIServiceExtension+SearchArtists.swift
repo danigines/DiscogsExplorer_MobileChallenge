@@ -4,7 +4,7 @@
 
 import Foundation
 
-extension DiscogsAPIService: DiscogsAPIServiceProtocol {
+extension DiscogsAPIService {
   /// Searches for artists by name using Discogs `/database/search` endpoint.
   ///
   /// - Parameters:
