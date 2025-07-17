@@ -10,4 +10,6 @@ protocol DiscogsAPIServiceProtocol {
   func searchArtists(query: String) async throws -> SearchResponse
   /// Searches for artists detail an ID.
   func fetchArtistDetail(id: Int) async throws -> ArtistDetail
+  /// Searches for artist releases such as year, label, genre.
+  func fetchArtistReleases(artistID: Int) async throws -> ReleaseResponse
 }
