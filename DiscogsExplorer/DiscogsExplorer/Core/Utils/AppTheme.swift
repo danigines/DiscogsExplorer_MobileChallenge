@@ -12,6 +12,7 @@ struct AppTheme {
   static let placeholderBackground = Color.appPlaceholderBackground
 
   // MARK: - Text
+  static let whiteText = Color.appWhiteText
   static let primaryText = Color.appTextPrimary
   static let secondaryText = Color.appTextSecondary
   static let placeholderText = Color.appPlaceholderText

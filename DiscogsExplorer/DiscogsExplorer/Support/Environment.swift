@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum Environment {
+struct APIEnvironment {
     // MARK: - API
     static let baseURL = URL(string: "https://api.discogs.com")!
 
