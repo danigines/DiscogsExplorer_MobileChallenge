@@ -116,7 +116,10 @@ struct AlbumsView: View {
       ForEach(releases) { release in
         NavigationLink {
           // Destination view: the detail view for unfiltered album
-          AlbumDetailView(masterID: release.id)
+          AlbumDetailView(
+            masterID: release.id,
+            albumName: release.title
+          )
         } label: {
           // What appears in the list row
           ReleaseRowView(release: release)
