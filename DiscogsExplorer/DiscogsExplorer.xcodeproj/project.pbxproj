@@ -6,14 +6,34 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		953A62032E2AE2F7005F6463 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 953A62022E2AE2F7005F6463 /* ViewInspector */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		953A61EC2E2AD866005F6463 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9521AFFE2E282C6D00B9F833 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9521B0052E282C6D00B9F833;
+			remoteInfo = DiscogsExplorer;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		9521B0062E282C6D00B9F833 /* DiscogsExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscogsExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		953A61E82E2AD866005F6463 /* DiscogsExplorerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiscogsExplorerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		9521B0082E282C6D00B9F833 /* DiscogsExplorer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = DiscogsExplorer;
+			sourceTree = "<group>";
+		};
+		953A61E92E2AD866005F6463 /* DiscogsExplorerTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DiscogsExplorerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +46,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		953A61E52E2AD866005F6463 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				953A62032E2AE2F7005F6463 /* ViewInspector in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				9521B0082E282C6D00B9F833 /* DiscogsExplorer */,
+				953A61E92E2AD866005F6463 /* DiscogsExplorerTests */,
 				9521B0072E282C6D00B9F833 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				9521B0062E282C6D00B9F833 /* DiscogsExplorer.app */,
+				953A61E82E2AD866005F6463 /* DiscogsExplorerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +100,30 @@
 			productReference = 9521B0062E282C6D00B9F833 /* DiscogsExplorer.app */;
 			productType = "com.apple.product-type.application";
 		};
+		953A61E72E2AD866005F6463 /* DiscogsExplorerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 953A61EE2E2AD866005F6463 /* Build configuration list for PBXNativeTarget "DiscogsExplorerTests" */;
+			buildPhases = (
+				953A61E42E2AD866005F6463 /* Sources */,
+				953A61E52E2AD866005F6463 /* Frameworks */,
+				953A61E62E2AD866005F6463 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				953A61ED2E2AD866005F6463 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				953A61E92E2AD866005F6463 /* DiscogsExplorerTests */,
+			);
+			name = DiscogsExplorerTests;
+			packageProductDependencies = (
+				953A62022E2AE2F7005F6463 /* ViewInspector */,
+			);
+			productName = DiscogsExplorerTests;
+			productReference = 953A61E82E2AD866005F6463 /* DiscogsExplorerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -83,6 +137,10 @@
 					9521B0052E282C6D00B9F833 = {
 						CreatedOnToolsVersion = 16.4;
 					};
+					953A61E72E2AD866005F6463 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 9521B0052E282C6D00B9F833;
+					};
 				};
 			};
 			buildConfigurationList = 9521B0012E282C6D00B9F833 /* Build configuration list for PBXProject "DiscogsExplorer" */;
@@ -95,6 +153,7 @@
 			mainGroup = 9521AFFD2E282C6D00B9F833;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				953A62012E2AE2F7005F6463 /* XCRemoteSwiftPackageReference "ViewInspector" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9521B0072E282C6D00B9F833 /* Products */;
@@ -102,12 +161,20 @@
 			projectRoot = "";
 			targets = (
 				9521B0052E282C6D00B9F833 /* DiscogsExplorer */,
+				953A61E72E2AD866005F6463 /* DiscogsExplorerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9521B0042E282C6D00B9F833 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		953A61E62E2AD866005F6463 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -124,7 +191,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		953A61E42E2AD866005F6463 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		953A61ED2E2AD866005F6463 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9521B0052E282C6D00B9F833 /* DiscogsExplorer */;
+			targetProxy = 953A61EC2E2AD866005F6463 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9521B00F2E282C6E00B9F833 /* Debug */ = {
@@ -302,6 +384,40 @@
 			};
 			name = Release;
 		};
+		953A61EF2E2AD866005F6463 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DanielGarcia.DiscogsExplorerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DiscogsExplorer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DiscogsExplorer";
+			};
+			name = Debug;
+		};
+		953A61F02E2AD866005F6463 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DanielGarcia.DiscogsExplorerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DiscogsExplorer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DiscogsExplorer";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -323,7 +439,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		953A61EE2E2AD866005F6463 /* Build configuration list for PBXNativeTarget "DiscogsExplorerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				953A61EF2E2AD866005F6463 /* Debug */,
+				953A61F02E2AD866005F6463 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		953A62012E2AE2F7005F6463 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		953A62022E2AE2F7005F6463 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 953A62012E2AE2F7005F6463 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9521AFFE2E282C6D00B9F833 /* Project object */;
 }

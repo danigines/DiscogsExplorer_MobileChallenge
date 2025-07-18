@@ -6,7 +6,7 @@ import Foundation
 
 // ViewModel responsible for fetching and exposing artist details to the view.
 @MainActor
-final class ArtistDetailViewModel: ObservableObject {
+final class ArtistDetailViewModel: ArtistDetailViewModelProtocol, ObservableObject {
   // MARK: - Published Properties
   @Published var artist: ArtistDetail? // The loaded artist details to display.
   @Published var isLoading = false

@@ -11,7 +11,7 @@ import SwiftUI
 struct DiscogsExplorerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SearchView(viewModel: ViewModelFactory.makeSearchViewModel())
         }
     }
 }
