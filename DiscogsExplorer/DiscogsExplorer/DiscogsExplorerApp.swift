@@ -11,8 +11,7 @@ import SwiftUI
 struct DiscogsExplorerApp: App {
     var body: some Scene {
         WindowGroup {
-            let factory = ViewModelFactory()
-            SearchView(viewModel: factory.makeSearchViewModel())
+            SearchView(viewModel: ViewModelFactory.makeSearchViewModel())
         }
     }
 }

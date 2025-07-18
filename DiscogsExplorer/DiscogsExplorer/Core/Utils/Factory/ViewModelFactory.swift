@@ -6,7 +6,7 @@ import Foundation
 
 @MainActor
 struct ViewModelFactory: ViewModelFactoryProtocol {
-  func makeSearchViewModel() -> any SearchViewModelProtocol {
+  static func makeSearchViewModel() -> any SearchViewModelProtocol {
     SearchViewModel(apiService: DiscogsAPIService())
   }
 }

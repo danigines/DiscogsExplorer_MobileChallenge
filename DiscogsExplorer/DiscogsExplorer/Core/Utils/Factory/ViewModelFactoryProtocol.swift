@@ -5,6 +5,7 @@
 import Foundation
 
 // This tells the compiler: “This protocol method is expected to be run on the main actor.”
+@MainActor 
 protocol ViewModelFactoryProtocol {
-  @MainActor func makeSearchViewModel() -> any SearchViewModelProtocol
+  static func makeSearchViewModel() -> any SearchViewModelProtocol
 }
