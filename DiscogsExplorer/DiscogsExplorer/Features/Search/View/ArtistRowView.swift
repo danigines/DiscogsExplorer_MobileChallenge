@@ -14,7 +14,7 @@ struct ArtistRowView: View {
       CachedImage(url: URL(string: artist.thumb ?? "")) {
         Image(systemName: "person.crop.circle.fill")
           .resizable()
-          .foregroundStyle(.secondary)
+          .foregroundStyle(AppTheme.secondaryText)
           .opacity(0.3)
       }
       .frame(width: 50, height: 50)

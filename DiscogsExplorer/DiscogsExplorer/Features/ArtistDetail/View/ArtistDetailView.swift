@@ -27,7 +27,7 @@ struct ArtistDetailView: View {
       .task {
         await viewModel.fetchArtistDetail()
       }
-      .background(Color.appBackground)
+      .background(AppTheme.background)
       .ignoresSafeArea(edges: .bottom)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
@@ -35,12 +35,12 @@ struct ArtistDetailView: View {
             dismiss() // go back
           } label: {
             Label("", systemImage: "chevron.left")
-              .labelStyle(.titleAndIcon)
+              .labelStyle(.iconOnly)
               .foregroundColor(AppTheme.accent)
             }
           }
         }
-        .navigationBarBackButtonHidden(true) // Hides system button
+      .navigationBarBackButtonHidden(true) // Hides system button
   }
 
   @ViewBuilder
@@ -92,7 +92,7 @@ struct ArtistDetailView: View {
 
           // Navigation to Albums View
           NavigationLink {
-            AlbumsView(artistID: artistID)
+            AlbumsView(artistID: artistID, artistName: artist.name)
           } label: {
             Label("View Albums", systemImage: "opticaldisc")
               .padding()

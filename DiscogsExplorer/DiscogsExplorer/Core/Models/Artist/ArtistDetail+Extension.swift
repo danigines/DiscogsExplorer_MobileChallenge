@@ -26,9 +26,9 @@ extension ArtistDetail {
         profile = String(profile[..<range.lowerBound])
       }
     } else {
-      let tags = self.getArtistTags(profile)
-      // Map each artist to a line that begins with a bullet
-      return tags.map { "• \($0)" }.joined(separator: "\n")
+      if let formattedArtistList = self.formattedArtistList(profile) {
+        profile = formattedArtistList
+      }
     }
 
     // Replace \r\n and \n with a newline for paragraph spacing
@@ -38,19 +38,39 @@ extension ArtistDetail {
     return profile.trimmingCharacters(in: .whitespacesAndNewlines)
   }
 
-  /// Extracts all [a=...] artist references from a profile.
-  private func getArtistTags(_ profile: String) -> [String] {
-    // This matches [a=Artist Name] and captures just the "Artist Name" part.
-    let pattern = "\\[a=([^\\]]+)\\]"
-    let regex = try? NSRegularExpression(pattern: pattern, options: [])
-    //  Convert `self` into NSString to use NSRange-based matching.
-    let nsString = profile as NSString
-    // Find all matches of the pattern in the string - If none found, return [].
-    let results = regex?.matches(in: profile, options: [], range: NSRange(location: 0, length: nsString.length)) ?? []
-    return results.map { match in
-      // Capture group 1 contains what's inside [a=...]
-      nsString.substring(with: match.range(at: 1))
+  /// Extracts & process all [a=...] artist references from a profile.
+  func formattedArtistList(_ profile: String) -> String? {
+    let pattern = #"(,?\s*)?\[a=([^\]]+)\]"#
+    let regex = try! NSRegularExpression(pattern: pattern, options: [])
+    let matches = regex.matches(in: profile, range: NSRange(profile.startIndex..., in: profile))
+
+    guard !matches.isEmpty else { return profile }
+
+    // Extract only the names (group 2)
+    let artistNames = matches.map {
+      String(profile[Range($0.range(at: 2), in: profile)!])
     }
+
+    if artistNames.count == 1 {
+      // Replace the single tag with the name directly
+      return profile.replacingOccurrences(of: "[a=\(artistNames[0])]", with: artistNames[0])
+    }
+
+    // Replace all [a=...] along with preceding commas and spaces
+    var cleanedText = regex.stringByReplacingMatches(
+      in: profile,
+      options: [],
+      range: NSRange(profile.startIndex..., in: profile),
+      withTemplate: ""
+    ).trimmingCharacters(in: .whitespacesAndNewlines)
+
+    // Remove trailing commas, if any remain
+    if cleanedText.hasSuffix(",") {
+      cleanedText.removeLast()
+    }
+
+    // Add the list of artists
+    let bulletList = artistNames.map { "• \($0)" }.joined(separator: "\n")
+    return "\(cleanedText)\n\(bulletList)"
   }
 }
-

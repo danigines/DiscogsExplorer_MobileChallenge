@@ -9,8 +9,8 @@ struct Release: Codable, Identifiable {
   let id: Int
   let title: String
   let year: Int?
-  let format: [String]?
-  let label: [String]?
+  let format: String?
+  let label: String?
   let type: String
   let thumb: String?
   let resourceURL: String
