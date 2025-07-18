@@ -26,4 +26,43 @@ An iOS 17+ SwiftUI app to search and explore music artists, albums, and band mem
 
 ## 📐 Architecture
 
-This app follows a **modular MVVM + Clean Architecture** structure
+This app follows a **modular MVVM** structure
+
+## ✅ Static Analysis
+
+Using [SwiftLint](https://github.com/realm/SwiftLint) to enforce style and linting rules.
+
+**1. Install SwiftLint**
+
+If you have _Homebrew_, open your _Terminal_ and run:
+```bash
+brew install swiftlint
+```
+✅ Once installed, verify it with:
+```bash
+swiftlint version
+```
+You should see something like:
+```bash
+0.59.1
+```
+**2. Navigate to Your Project Directory**
+```bash
+cd /path/to/DiscogsExplorer
+```
+Or, if you're in the root of your repo:
+```bash
+cd DiscogsExplorer
+```
+**3.Run SwiftLint in the Console**
+
+In the root of your project, run:
+```bash
+swiftlint
+```
+You’ll see output like:
+```bash
+Sources/ViewModels/SearchViewModel.swift:42:1: warning: Force Unwrapping Violation: Force unwrapping should be avoided. (force_unwrapping)
+Tests/SearchViewModelTests.swift:15: warning: Line Length Violation: Line should be 120 characters or less (currently 134). (line_length)
+```
+These are warnings or errors based on your `.swiftlint.yml` file.
