@@ -5,7 +5,7 @@
 import Foundation
 
 @MainActor
-final class SearchViewModel: ObservableObject {
+final class SearchViewModel: SearchViewModelProtocol {
   // MARK: - Published UI State
   @Published var results: [ArtistSearchResult] = []
   @Published var query: String = ""

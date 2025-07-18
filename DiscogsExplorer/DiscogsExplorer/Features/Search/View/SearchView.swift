@@ -5,7 +5,11 @@
 import SwiftUI
 
 struct SearchView: View {
-  @StateObject private var viewModel = SearchViewModel()
+  @StateObject private var container: SearchViewModelContainer
+
+  init(viewModel: @autoclosure @escaping () -> any SearchViewModelProtocol) {
+    _container = StateObject(wrappedValue: SearchViewModelContainer(viewModel()))
+  }
 
   var body: some View {
     NavigationStack {
@@ -13,18 +17,18 @@ struct SearchView: View {
         // Search Bar at the top
         TextField(
           "",
-          text: $viewModel.query,
+          text: $container.model.query,
           prompt: Text("Search for an artist")
             .foregroundColor(AppTheme.placeholderText)
         )
           .textFieldStyle(.roundedBorder)
           .padding(.horizontal)
           .onSubmit {
-            Task { await viewModel.searchArtists() }
+            Task { await container.model.searchArtists() }
           }
 
         // Initial loading state
-        if viewModel.isLoading && viewModel.results.isEmpty {
+        if container.model.isLoading && container.model.results.isEmpty {
           Spacer()
           ProgressView("Searching...")
             .padding()
@@ -32,7 +36,7 @@ struct SearchView: View {
           Spacer()
         }
         // Empty state
-        else if viewModel.results.isEmpty {
+        else if container.model.results.isEmpty {
           Spacer()
           VStack(spacing: 12) {
             Image(systemName: "magnifyingglass")
@@ -47,7 +51,7 @@ struct SearchView: View {
         // Results list
         else {
           List {
-            ForEach(viewModel.results) { artist in
+            ForEach(container.model.results) { artist in
               NavigationLink {
                 // Destination view: the detail view for this artist
                 ArtistDetailView(artistID: artist.id)
@@ -64,12 +68,12 @@ struct SearchView: View {
       .navigationTitle("Discogs Artist Explorer")
       .foregroundColor(AppTheme.primaryText)
       .alert("Error", isPresented: Binding<Bool>(
-        get: { viewModel.errorMessage != nil },
-        set: { _ in viewModel.errorMessage = nil }
+        get: { container.model.errorMessage != nil },
+        set: { _ in container.model.errorMessage = nil }
       ), actions: {
         Button("OK", role: .cancel) { }
       }, message: {
-        Text(viewModel.errorMessage ?? "Unknown Error")
+        Text(container.model.errorMessage ?? "Unknown Error")
       })
     }
   }
@@ -77,5 +81,5 @@ struct SearchView: View {
 
 // Preview
 #Preview {
-  SearchView()
+  SearchView(viewModel: SearchViewModel())
 }
