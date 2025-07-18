@@ -10,8 +10,13 @@ struct SearchView: View {
   var body: some View {
     NavigationStack {
       VStack {
-        // 🔍 Search Bar at the top
-        TextField("Search for an artist", text: $viewModel.query)
+        // Search Bar at the top
+        TextField(
+          "",
+          text: $viewModel.query,
+          prompt: Text("Search for an artist")
+            .foregroundColor(AppTheme.placeholderText)
+        )
           .textFieldStyle(.roundedBorder)
           .padding(.horizontal)
           .onSubmit {
@@ -23,6 +28,7 @@ struct SearchView: View {
           Spacer()
           ProgressView("Searching...")
             .padding()
+            .foregroundStyle(AppTheme.primaryText)
           Spacer()
         }
         // Empty state
@@ -34,7 +40,7 @@ struct SearchView: View {
               .foregroundStyle(.secondary)
             Text("Start typing to search for artists")
               .font(.body)
-              .foregroundStyle(.secondary)
+              .foregroundColor(AppTheme.primaryText)
           }
           Spacer()
         }
@@ -49,29 +55,21 @@ struct SearchView: View {
                 // What appears in the list row
                 ArtistRowView(artist: artist)
               }
-              // Show spinner at end of list when paginating
-              if artist.id == viewModel.results.last?.id,
-                 viewModel.isLoading {
-                HStack {
-                  Spacer()
-                  ProgressView()
-                    .padding(.vertical)
-                  Spacer()
-                }
-              }
             }
           }
           .listStyle(.plain)
         }
       }
-      .navigationTitle("Search")
+      .background(AppTheme.background)
+      .navigationTitle("Discogs Artist Explorer")
+      .foregroundColor(AppTheme.primaryText)
       .alert("Error", isPresented: Binding<Bool>(
         get: { viewModel.errorMessage != nil },
         set: { _ in viewModel.errorMessage = nil }
       ), actions: {
         Button("OK", role: .cancel) { }
       }, message: {
-        Text(viewModel.errorMessage ?? "Unknown error")
+        Text(viewModel.errorMessage ?? "Unknown Error")
       })
     }
   }

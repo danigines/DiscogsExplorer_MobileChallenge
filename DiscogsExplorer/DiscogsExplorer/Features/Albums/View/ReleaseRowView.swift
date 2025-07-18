@@ -9,33 +9,35 @@ struct ReleaseRowView: View {
   let release: Release
 
   var body: some View {
-    NavigationLink {
-      // Use release ID for master endpoint
-      AlbumDetailView(masterID: release.id)
-    } label: {
-      HStack(spacing: 12) {
-        // Album thumbnail
-        CachedImage(url: URL(string: release.thumb ?? "")) {
-          Color.gray.opacity(0.2)
-        }
-        .frame(width: 50, height: 50)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
-
-        // Album title and year
-        VStack(alignment: .leading, spacing: 4) {
-          Text(release.title)
-            .font(.body)
-
-          if let year = release.year {
-            Text("Released: \(year)")
-              .font(.caption)
-              .foregroundStyle(.secondary)
-          }
-        }
-
-        Spacer()
+    HStack(spacing: 12) {
+      // Album thumbnail
+      CachedImage(url: URL(string: release.thumb ?? "")) {
+        AppTheme.placeholderBackground
       }
-      .padding(.vertical, 4)
+      .frame(width: 50, height: 50)
+      .clipShape(RoundedRectangle(cornerRadius: 8))
+
+      // Album title and year
+      VStack(alignment: .leading, spacing: 4) {
+        Text(release.title)
+          .font(.title3)
+          .foregroundStyle(AppTheme.primaryText)
+
+        if let year = release.year {
+          Text("Released: \(String(format: "%d", year))")
+            .font(.body)
+            .foregroundStyle(AppTheme.secondaryText)
+        }
+
+        if let label = release.label {
+          Text("Record Label: \(label)")
+            .font(.caption)
+            .foregroundStyle(AppTheme.secondaryText)
+        }
+      }
+
+      Spacer()
     }
+    .padding(.vertical, 4)
   }
 }

@@ -14,7 +14,7 @@ extension DiscogsAPIService {
   func searchArtists(query: String) async throws -> SearchResponse {
     // Build the full URL with query parameters
     var components = URLComponents(
-      url: Environment.baseURL.appendingPathComponent("database/search"),
+      url: APIEnvironment.baseURL.appendingPathComponent("database/search"),
       resolvingAgainstBaseURL: false)
 
     // Add required query parameters for search
@@ -28,7 +28,7 @@ extension DiscogsAPIService {
 
     // Prepare the request and attach the Discogs token via Authorization header
     var request = URLRequest(url: url)
-    request.setValue(Environment.authHeader["Authorization"], forHTTPHeaderField: "Authorization")
+    request.setValue(APIEnvironment.authHeader["Authorization"], forHTTPHeaderField: "Authorization")
 
     // Perform the network request asynchronously
     let (data, response) = try await session.data(for: request)

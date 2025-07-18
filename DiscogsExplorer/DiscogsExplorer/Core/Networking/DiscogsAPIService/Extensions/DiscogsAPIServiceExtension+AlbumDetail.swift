@@ -12,11 +12,11 @@ extension DiscogsAPIService {
   /// - Throws: `APIError` if request fails or decoding fails.
   func fetchAlbumDetail(masterID: Int) async throws -> AlbumDetail {
     // Construct the API endpoint
-    let url = Environment.baseURL.appendingPathComponent("masters/\(masterID)")
+    let url = APIEnvironment.baseURL.appendingPathComponent("masters/\(masterID)")
 
     // Prepare the request and attach the Discogs token via Authorization header
     var request = URLRequest(url: url)
-    request.setValue(Environment.authHeader["Authorization"], forHTTPHeaderField: "Authorization")
+    request.setValue(APIEnvironment.authHeader["Authorization"], forHTTPHeaderField: "Authorization")
 
     // Perform the network request asynchronously
     let (data, response) = try await session.data(for: request)
